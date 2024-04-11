@@ -21,13 +21,20 @@ namespace SortowanieGIT
         static int[] GetArrayFromUser()
         {
             Console.WriteLine("Podaj liczbę elementów tablicy:");
-            int size = int.Parse(Console.ReadLine());
+            int size;
+            while (!int.TryParse(Console.ReadLine(), out size))
+            {
+                Console.WriteLine("Nieprawidłowa liczba, spróbuj ponownie:");
+            }
 
             int[] array = new int[size];
             for (int i = 0; i < size; i++)
             {
                 Console.WriteLine($"Podaj element {i + 1}:");
-                array[i] = int.Parse(Console.ReadLine());
+                while (!int.TryParse(Console.ReadLine(), out array[i]))
+                {
+                    Console.WriteLine("Nieprawidłowa liczba, spróbuj ponownie:");
+                }
             }
 
             return array;
